@@ -2,7 +2,7 @@
 
 namespace PFT
 {
-    namespace Securities
+    namespace Security
     {
 
     }

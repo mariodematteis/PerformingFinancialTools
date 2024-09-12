@@ -1,4 +1,6 @@
-#include "Optimization.hpp"
+#include "Method/Optimization.hpp"
+
+using namespace PFT::Methods::Optimization;
 
 namespace PFT
 {
@@ -11,7 +13,7 @@ namespace PFT
                     double tolerance) noexcept -> float
         {
             double x = x0;
-            for (int i = 0; i < PFT::Optimization::MAXIMUM_ITERATION; i++)
+            for (int i = 0; i < MAXIMUM_ITERATION; i++)
             {
                 double fx = f(x);
                 if (std::abs(fx) < tolerance)
@@ -39,7 +41,7 @@ namespace PFT
             auto &df = function_pair.second;
 
             double x = x0;
-            for (int i = 0; i < PFT::Optimization::MAXIMUM_ITERATION; i++)
+            for (int i = 0; i < MAXIMUM_ITERATION; i++)
             {
                 double fx = f(x);
                 if (std::abs(fx) < tolerance)
