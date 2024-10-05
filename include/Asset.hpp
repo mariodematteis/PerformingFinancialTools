@@ -32,6 +32,9 @@ namespace PFT
             auto set_symbol(std::string symbol) -> void { _symbol = symbol; }
             auto set_name(std::string name) -> void { _name = name; }
             auto set_asset_price(double asset_price) -> void { _asset_price = asset_price; }
+
+            virtual auto to_string() const -> std::string;
+            virtual auto clone() const -> std::unique_ptr<Asset> = 0;
         };
     }
 }

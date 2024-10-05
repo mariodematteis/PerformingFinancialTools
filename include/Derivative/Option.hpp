@@ -3,7 +3,7 @@
 #include "Derivative.hpp"
 #include "Method/AnalyticalMethod.hpp"
 
-namespace PFT::Security::Derivative::Option
+namespace PFT::Security::Derivative
 {
     class Option : public Derivative
     {

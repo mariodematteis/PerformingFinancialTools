@@ -15,7 +15,8 @@ namespace PFT::Security::Derivative::Option
         return engine(*this);
     };
 
-    Engine::operator()(const EuropeanCallOption & option, double t) const->double
+    Engine::operator()(const EuropeanCallOption & option,
+                       double t) const->double
     {
         return bsm_model.european_call_option_price(option.get_asset_price(),
                                                     option.get_strike_price(),
@@ -26,7 +27,8 @@ namespace PFT::Security::Derivative::Option
                                                     0.0);
     }
 
-    auto Engine::operator()(const EuropeanPutOption &option, double t) const -> double
+    auto Engine::operator()(const EuropeanPutOption &option,
+                            double t) const -> double
     {
         return bsm_model.european_put_option_price(option.get_asset_price(),
                                                    option.get_strike_price(),

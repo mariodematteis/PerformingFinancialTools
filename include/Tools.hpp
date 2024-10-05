@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-namespace PFT ::Tools
+namespace PFT::Tools
 {
 
     template <typename T>

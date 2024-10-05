@@ -1,30 +1,44 @@
 #pragma once
 
-namespace PFT
+#include "../Tools.hpp"
+
+#include <functional>
+#include <iostream>
+#include <vector>
+
+using namespace PFT::Tools;
+
+namespace PFT::Methods::Numerical::Pricing
 {
-    namespace Methods
+    class BinomialTree
     {
-        namespace Numerical
-        {
-            namespace Pricing
-            {
+    private:
+        std::vector<std::vector<double>> underlying_prices;
+        std::vector<std::vector<double>> option_prices;
 
-                class BinomialTree
-                {
-                };
+        std::function<double(double)> derivative_function;
 
-                class TrinomialTree
-                {
-                };
+    public:
+        BinomialTree();
+        ~BinomialTree();
 
-                class MonteCarlo
-                {
-                };
+        auto compute_underlying_prices() -> void;
+        auto compute_option_prices() -> void;
 
-                class BlackScholes
-                {
-                };
-            }
-        }
-    }
+        auto
+    };
+
+    class TrinomialTree
+    {
+        std::vector<std::vector<double>> udnerlying_prices;
+        std::vector<std::vector<double>> option_prices;
+    };
+
+    class MonteCarlo
+    {
+    };
+
+    class BlackScholes
+    {
+    };
 }

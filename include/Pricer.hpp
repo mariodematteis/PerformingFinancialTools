@@ -8,10 +8,11 @@ namespace PFT::Pricer
     {
     private:
         PFT::Methods::Analytical::BlackScholesMerton bsm_model;
+        PFT::Methods::Numerical
 
-    public:
-        auto operator()(const PFT::Security::Derivative::Option::EuropeanCallOption &option,
-                        double t = 0.0) const -> double
+            public : auto
+                     operator()(const PFT::Security::Derivative::Option::EuropeanCallOption &option,
+                                double t = 0.0) const -> double
         {
             return bsm_model.european_call_option_price(option.get_asset_price(),
                                                         option.get_strike_price(),
@@ -33,5 +34,7 @@ namespace PFT::Pricer
                                                        option.get_sigma(),
                                                        0.0);
         }
+
+        auto operator()(const co)
     };
 }
