@@ -4,17 +4,15 @@
 
 #include <iostream>
 
-using namespace PFT::Tools;
-
 namespace PFT::Methods::Analytical
 {
     class BlackScholesMerton
     {
     private:
-        standardize_moneyness _d1;
-        critical_value _d2;
+        PFT::Tools::standardize_moneyness _d1;
+        PFT::Tools::critical_value _d2;
 
-        norm_cdf cdf;
+        PFT::Tools::norm_cdf cdf;
 
     public:
         auto european_call_option_price(double underlying_price,

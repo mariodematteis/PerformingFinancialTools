@@ -6,8 +6,6 @@
 #include <iostream>
 #include <vector>
 
-using namespace PFT::Tools;
-
 namespace PFT::Methods::Numerical::Pricing
 {
     class BinomialTree
@@ -22,10 +20,8 @@ namespace PFT::Methods::Numerical::Pricing
         BinomialTree();
         ~BinomialTree();
 
-        auto compute_underlying_prices() -> void;
-        auto compute_option_prices() -> void;
-
-        auto
+        void compute_underlying_prices();
+        void compute_option_prices();
     };
 
     class TrinomialTree
