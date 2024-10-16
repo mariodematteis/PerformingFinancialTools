@@ -1,9 +1,8 @@
 #pragma once
 
-#include "../Tools.hpp"
+#include "Tools.hpp"
 
 #include <functional>
-#include <cmath>
 #include <iostream>
 #include <utility>
 
@@ -29,14 +28,14 @@ namespace PFT::Methods::Optimization
 
     template <PFT::Tools::AllowedTypes T>
     auto bisection(std::function<double(double)> f,
-                    T a = DEFAULT_A,
-                    T b = DEFAULT_B,
-                    double tol = tolerance) noexcept -> float;
+                   T a = DEFAULT_A,
+                   T b = DEFAULT_B,
+                   double tol = tolerance) noexcept -> float;
 
     template <PFT::Tools::AllowedTypes T>
     auto bisection(std::function<double(double)> f,
-                    std::pair<T, T> interval,
-                    double tol = tolerance) noexcept -> float;
+                   std::pair<T, T> interval,
+                   double tol = tolerance) noexcept -> float;
 
     template <PFT::Tools::AllowedTypes T>
     auto secant(std::function<double(double)> f,
