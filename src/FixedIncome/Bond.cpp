@@ -144,34 +144,34 @@ namespace PFT::Security::FixedIncome
     Bond::Bond(const std::unordered_map<std::string, T> &specification)
     {
 
-        if (!specification.contains(MATURITY_KEY))
+        if (!specification.contains(maturity_key))
         {
-            maturity = specification[MATURITY_KEY];
+            maturity = specification[maturity_key];
         }
 
-        if (!specification.contains(INTEREST_RATE_KEY))
+        if (!specification.contains(interest_rate_key))
         {
-            interest_rate = specification[INTEREST_RATE_KEY];
+            interest_rate = specification[interest_rate_key];
+        }
+        if (!specification.contains(face_value_key))
+
+        {
+            face_value = specification[face_value_key];
         }
 
-        if (!specification.contains(FACE_VALUE_KEY))
+        if (!specification.contains(coupon_rate_key))
         {
-            face_value = specification[FACE_VALUE_KEY];
+            coupon_rate = specification[coupon_rate_key];
         }
 
-        if (!specification.contains(COUPON_RATE_KEY))
+        if (!specification.contains(coupon_year_frequency_key)) // Type.checking
         {
-            coupon_rate = specification[COUPON_RATE_KEY];
-        }
-
-        if (!specification.contains(COUPON_YEAR_FREQUENCY_KEY)) // Type.checking
-        {
-            coupon_year_frequency = specification[COUPON_YEAR_FREQUENCY_KEY];
+            coupon_year_frequency = specification[coupon_year_frequency_key];
         }
 
         set_asset_class(bond_security_default_class);
-        set_symbol(DEFAULT_SYMBOL);
-        set_name(DEFAULT_NAME);
+        set_symbol(default_symbol);
+        set_name(default_name);
         coupon_payment = face_value * (coupon_rate / coupon_year_frequency);
         maturity_payment = face_value + coupon_payment;
     }
@@ -222,7 +222,7 @@ namespace PFT::Security::FixedIncome
 
     std::string Bond::to_string() const
     {
-        return std::vformat(FORMAT_BOND, std::make_format_args(maturity, face_value));
+        return std::vformat(general_bond_description, std::make_format_args(maturity, face_value));
     }
 
     std::unique_ptr<Security> Bond::clone() const
