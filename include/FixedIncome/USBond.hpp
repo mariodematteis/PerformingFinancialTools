@@ -18,7 +18,7 @@ namespace PFT::Security::FixedIncome::USBond
                      double coupon_rate,
                      int coupon_year_frequency,
                      std::string auction_date, std::string issue_date, std::string cusip,
-                     std::string symbol = DEFAULT_SYMBOL, std::string name = DEFAULT_NAME);
+                     std::string symbol = default_symbol, std::string name = default_name);
 
         double price() const override;
         double yield_to_maturity() const override;
@@ -44,7 +44,8 @@ namespace PFT::Security::FixedIncome::USBond
                      double discount_rate,
                      std::string issue_date,
                      std::string cusip,
-                     std::string symbol = DEFAULT_SYMBOL, std::string name = DEFAULT_NAME);
+                     std::string symbol = default_symbol,
+                     std::string name = default_name);
 
         double price() const override;
         double yield_to_maturity() const override;
@@ -71,8 +72,8 @@ namespace PFT::Security::FixedIncome::USBond
                      int coupon_year_frequency,
                      std::string issue_date,
                      std::string cusip,
-                     std::string symbol = DEFAULT_SYMBOL,
-                     std::string name = DEFAULT_NAME);
+                     std::string symbol = default_symbol,
+                     std::string name = default_name);
 
         double price() const override;
         double yield_to_maturity() const override;
@@ -97,8 +98,8 @@ namespace PFT::Security::FixedIncome::USBond
              double coupon_rate,
              int coupon_year_frequency,
              double inflation_rate,
-             std::string symbol = DEFAULT_SYMBOL,
-             std::string name = DEFAULT_NAME);
+             std::string symbol = default_symbol,
+             std::string name = default_name);
 
         double price() const override;
         double yield_to_maturity() const override;
@@ -127,8 +128,8 @@ namespace PFT::Security::FixedIncome::USBond
                       int coupon_year_frequency,
                       bool tax_exempt,
                       std::string state,
-                      std::string symbol = DEFAULT_SYMBOL,
-                      std::string name = DEFAULT_NAME);
+                      std::string symbol = default_symbol,
+                      std::string name = default_name);
 
         double price() const override;
         double yield_to_maturity() const override;

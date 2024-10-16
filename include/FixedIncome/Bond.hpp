@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Security.hpp"
-#include "../Tools.hpp"
+#include "Tools.hpp"
 
-#include <array>
-#include <algorithm>
-#include <format>
-#include <vector>
-#include <numeric>
-#include <iostream>
-#include <memory>
 #include <unordered_map>
+#include <algorithm>
+#include <iostream>
+#include <numeric>
+#include <format>
+#include <memory>
+#include <vector>
+#include <array>
 
 namespace PFT::Security::FixedIncome
 {
@@ -20,13 +20,13 @@ namespace PFT::Security::FixedIncome
     static const std::string zcb_security_default_class = "zero_coupon_bond";
     static const std::string coupon_bond_security_default_class = "coupon_bond";
 
-    static const std::string MATURITY_KEY = "maturity";
-    static const std::string COUPON_RATE_KEY = "coupon_rate";
-    static const std::string FACE_VALUE_KEY = "face_value";
-    static const std::string INTEREST_RATE_KEY = "interest_rate";
-    static const std::string COUPON_YEAR_FREQUENCY_KEY = "coupon_year_frequency";
+    static const std::string maturity_key = "maturity";
+    static const std::string coupon_rate_key = "coupon_rate";
+    static const std::string face_value_key = "face_value";
+    static const std::string interest_rate_key = "interest_rate";
+    static const std::string coupon_year_frequency_key = "coupon_year_frequency";
 
-    static const std::string_view FORMAT_BOND = "Bond Sheet Information\n\nMaturity -> \t {}\nFace Value -> \t {}";
+    static const std::string_view general_bond_description = "Bond Sheet Information\n\nMaturity -> \t {}\nFace Value -> \t {}";
 
     class CashFlows
     {
@@ -61,7 +61,7 @@ namespace PFT::Security::FixedIncome
         }
     };
 
-    class Annuity : public Security, public CashFlows
+    class Annuity : public PFT::Security::Security, public CashFlows
     {
     private:
         const double amount_;
@@ -74,11 +74,11 @@ namespace PFT::Security::FixedIncome
                 double interest_rate,
                 int compounding_frequency,
                 double maturity,
-                const std::string &symbol = DEFAULT_SYMBOL,
-                const std::string &name = DEFAULT_NAME);
+                const std::string &symbol = default_symbol,
+                const std::string &name = default_name);
     };
 
-    class Perpetuity : public Security
+    class Perpetuity : public PFT::Security::Security
     {
     private:
         double amount_;
@@ -91,7 +91,7 @@ namespace PFT::Security::FixedIncome
         double current_price();
     };
 
-    class ZeroCouponBond : public Security, public CashFlows
+    class ZeroCouponBond : public PFT::Security::Security, public CashFlows
     {
     private:
         const double face_value_;
@@ -104,11 +104,11 @@ namespace PFT::Security::FixedIncome
                        double interest_rate,
                        int compounding_frequency,
                        double maturity,
-                       const std::string &symbol = DEFAULT_SYMBOL,
-                       const std::string &name = DEFAULT_NAME);
+                       const std::string &symbol = default_symbol,
+                       const std::string &name = default_name);
     };
 
-    class CouponBond : public Security
+    class CouponBond : public PFT::Security::Security
     {
     private:
         const double face_value_;
@@ -127,11 +127,11 @@ namespace PFT::Security::FixedIncome
                    double coupon_rate,
                    int compounding_frequency,
                    double maturity,
-                   const std::string &symbol = DEFAULT_SYMBOL,
-                   const std::string &name = DEFAULT_NAME);
+                   const std::string &symbol = default_symbol,
+                   const std::string &name = default_name);
     };
 
-    class Bond : public Security
+    class Bond : public PFT::Security::Security
     {
 
     private:
@@ -153,8 +153,8 @@ namespace PFT::Security::FixedIncome
              T face_value,
              T coupon_rate,
              int coupon_year_frequency,
-             const std::string &symbol = DEFAULT_SYMBOL,
-             const std::string &name = DEFAULT_NAME);
+             const std::string &symbol = default_symbol,
+             const std::string &name = default_name);
 
         template <PFT::Security::AllowedSecuritySpecificationType T>
         Bond(const std::unordered_map<std::string, T> &specification);
