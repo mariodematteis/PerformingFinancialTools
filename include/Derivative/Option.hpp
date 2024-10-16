@@ -3,8 +3,16 @@
 #include "Derivative.hpp"
 #include "Method/Analytical.hpp"
 
+#include <format>
+
 namespace PFT::Security::Derivative
 {
+
+    static const std::string european_call_option_default_class = "european_call_option";
+    static const std::string european_put_option_default_class = "european_put_option";
+
+    static const std::string_view option_description = "";
+
     class Option : public Derivative
     {
     private:

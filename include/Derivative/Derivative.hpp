@@ -1,9 +1,13 @@
 #pragma once
 
-#include "../Security.hpp"
+#include "Security.hpp"
+
+#include <algorithm>
+#include <numeric>
 
 namespace PFT::Security::Derivative
 {
+
     class Derivative : public PFT::Security::Security
     {
     private:
