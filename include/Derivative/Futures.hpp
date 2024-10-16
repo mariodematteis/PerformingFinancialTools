@@ -6,6 +6,7 @@ namespace PFT::Security::Derivative
 {
     class Futures : public Derivative
     {
+
     };
 
 }

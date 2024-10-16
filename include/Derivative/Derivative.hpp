@@ -1,18 +1,18 @@
 #pragma once
 
-#include "../Asset.hpp"
+#include "../Security.hpp"
 
 namespace PFT::Security::Derivative
 {
-    class Derivative : public Asset
+    class Derivative : public PFT::Security::Security
     {
     private:
-        double maturity = 0.0;
+        const double maturity = 0.0;
 
     public:
         virtual ~Derivative() = default;
-        virtual auto describe() -> void = 0;
+        virtual void describe() = 0;
 
-        auto get_maturity() const -> double { return maturity; };
+        double get_maturity() const { return maturity; };
     };
 }

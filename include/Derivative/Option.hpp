@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Derivative.hpp"
-#include "Method/AnalyticalMethod.hpp"
+#include "Method/Analytical.hpp"
 
 namespace PFT::Security::Derivative
 {
@@ -13,67 +13,80 @@ namespace PFT::Security::Derivative
 
         double sigma = 0.0;
 
+    protected:
+        PFT::Methods::Analytical::BlackScholesMerton bsm_model;
+
     public:
-        auto get_strike_price() const -> double { return strike_price; }
-        auto get_interest_rate() const -> double { return interest_rate; }
-        auto get_sigma() const -> double { return sigma; }
+        double get_strike_price() const { return strike_price; }
+        double get_interest_rate() const { return interest_rate; }
+        double get_sigma() const { return sigma; }
 
-        virtual auto price() const -> double = 0;
-
-        virtual auto delta() const -> double = 0;
-        virtual auto gamma() const -> double = 0;
-        virtual auto theta() const -> double = 0;
-        virtual auto speed() const -> double = 0;
-        virtual auto charm() const -> double = 0;
-        virtual auto colour() const -> double = 0;
-        virtual auto vega() const -> double = 0;
-        virtual auto rho() const -> double = 0;
-        virtual auto vanna() const -> double = 0;
-        virtual auto volga() const -> double = 0;
+        virtual double delta() const = 0;
+        virtual double gamma() const = 0;
+        virtual double theta() const = 0;
+        virtual double speed() const = 0;
+        virtual double charm() const = 0;
+        virtual double colour() const = 0;
+        virtual double vega() const = 0;
+        virtual double rho() const = 0;
+        virtual double vanna() const = 0;
+        virtual double volga() const = 0;
     };
 
     class EuropeanOption : virtual public Option
     {
-    public:
-        using Option::Option;
     };
 
     class AmericanOption : virtual public Option
     {
-    public:
-        using Option::Option;
     };
 
     class CallOption : virtual public Option
     {
-    public:
-        using Option::Option;
     };
 
     class PutOption : virtual public Option
     {
-    public:
-        using Option::Option;
     };
 
     class EuropeanCallOption : public EuropeanOption, public CallOption
     {
     public:
-        using EuropeanOption::EuropeanOption;
-        EuropeanCallOption()
-        {
-        }
-        double price() const override;
+        EuropeanCallOption();
+        ~EuropeanCallOption();
+        void describe() override;
+        double black_scholes_price() const;
+
+        double delta() const override;
+        double gamma() const override;
+        double theta() const override;
+        double speed() const override;
+        double charm() const override;
+        double colour() const override;
+        double vega() const override;
+        double rho() const override;
+        double vanna() const override;
+        double volga() const override;
     };
 
     class EuropeanPutOption : public EuropeanOption, public PutOption
     {
     public:
-        using EuropeanOption::EuropeanOption;
-        EuropeanPutOption()
-        {
-        }
-        double price() const override;
+        EuropeanPutOption();
+        ~EuropeanPutOption();
+        void describe() override;
+        double black_scholes_price() const;
+
+        double delta() const override;
+        double gamma() const override;
+        double theta() const override;
+        double speed() const override;
+        double charm() const override;
+        double colour() const override;
+        double vega() const override;
+        double rho() const override;
+        double vanna() const override;
+        double volga() const override;
     };
 
 }
